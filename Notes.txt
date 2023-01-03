@@ -1,0 +1,27 @@
+Auto Logout
+This can also be useful if you'd like to automatically sign someone out of your website after a period of inactivity. In this case, we've defined inactivity as the user hasn't navigated to any other pages after 5 minutes.
+
+Put this at the root somewhere
+---------
+import { useSubmit, useTransition } from "@remix-run/react";
+import { useEffect } from "react";
+
+function AdminPage() {
+  useSessionTimeout();
+  return <div>{/* ... */}</div>;
+}
+
+function useSessionTimeout() {
+  const submit = useSubmit();
+  const transition = useTransition();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      submit(null, { method: "post", action: "/logout" });
+    }, 5 * 60_000);
+
+    return () => clearTimeout(timer);
+  }, [submit, transition]);
+}
+
+--------

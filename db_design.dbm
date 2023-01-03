@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+ Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="1.0.0-beta1" use-changelog="false" last-position="0,0" last-zoom="1" max-obj-count="4"
+	 default-schema="public" default-owner="postgres"
+	 layers="Default layer"
+	 active-layers="0"
+	 layer-name-colors="#000000"
+	 layer-rect-colors="#b4b4b4"
+	 show-layer-names="false" show-layer-rects="false">
+<database name="new_database" is-template="false" allow-conns="true">
+</database>
+
+<schema name="public" layers="0" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<table name="user" layers="0" collapse-mode="2" max-obj-count="1" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="500" y="240"/>
+	<column name="id" not-null="true"
+	 identity-type="ALWAYS">
+		<type name="bigint" length="0"/>
+	</column>
+</table>
+
+</dbmodel>
