@@ -5,7 +5,7 @@ import type { LoaderArgs } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { requireUserId } from "~/session.server";
 
-export let handle = {title: "HOME"}
+export let handle = {title: "FORMS"}
 
 export const loader = async ({ request }: LoaderArgs) => {
     await requireUserId(request);

@@ -15,7 +15,9 @@ import {
     IconGauge,
     IconHome2,
     IconSettings,
-    IconUser
+    IconUser,
+  IconBrandStackoverflow,
+  IconVocabulary
 } from "@tabler/icons";
 import { Link, Location, NavLink, useLocation } from "@remix-run/react";
 import { useEffect, useState } from "react";
@@ -28,13 +30,27 @@ type NavLinkDataRecord = {pos:number, icon: TablerIcon, label: any, mainUrl: str
 type NavLinkData = Array<NavLinkDataRecord>;
 
 const mainLinksMockdata: NavLinkData = [
-    { pos:1,icon: IconHome2, label: <ToolTipLabel label="Home"/>,mainUrl: "/",features:[] },
-    { pos:2,icon: IconDeviceDesktopAnalytics, label: <ToolTipLabel label="DB Engine"/>,mainUrl: "",features:[{name:"Databases", url:"dbengine"},{name:"Open Issues",url:"dashboard"}] },
-    { pos:3,icon: IconGauge, label: <ToolTipLabel label="Dashboard"/>,mainUrl: "",features:[{name:"Databases2", url:"placeholder7"},{name:"Open Issues2",url:"placeholder2"}] },
-    { pos:4,icon: IconCalendarStats, label: <ToolTipLabel label="Releases"/>,mainUrl: "",features:[{name:"Databases2", url:"placeholder8"},{name:"Open Issues3",url:"placeholder3"}] },
-    { pos:5,icon: IconUser, label: <ToolTipLabel label="Notes"/>,mainUrl: "",features:[{name:"Notes", url:"notes"},{name:"Open Issues4",url:"placeholder4"}] },
-    { pos:6,icon: IconFingerprint, label: <ToolTipLabel label="Security"/>,mainUrl: "",features:[{name:"Databases3", url:"placeholder9"},{name:"Open Issues5",url:"placeholder5"}] },
-    { pos:7,icon: IconSettings, label: <ToolTipLabel label="Settings"/> ,mainUrl: "", features:[{name:"Users", url:"settings/users"},{name:"Open Issues6",url:"placeholder6"}] },
+    { pos:1,icon: IconBrandStackoverflow, label: <ToolTipLabel label="Forms"/>,mainUrl: "/",features:[] },
+    { pos:2,icon: IconDeviceDesktopAnalytics, label: <ToolTipLabel label="App Data Management"/>,mainUrl: "",features:[
+            {name:"Employees", url:"datamanager/employees"},
+            {name:"Crews",url:"datamanager/crews"},
+            {name:"Plant & Machinery",url:"datamanager/machinery"},
+            {name:"Clients",url:"datamanager/clients"},
+            {name:"Safety Message",url:"datamanager/safetymessage"}
+        ]},
+
+
+    { pos:3,icon: IconVocabulary, label: <ToolTipLabel label="Documents"/>,mainUrl: "",features:[
+            {name:"SWMS", url:"documents/swms"},
+            {name:"Crew Manual",url:"documents/crewmanual"},
+            {name:"Ergon Blackbox",url:"documents/ergonblackbox"},
+            {name:"Reference Docs",url:"documents/referencedocs"}
+        ]},
+
+    { pos:4,icon: IconSettings, label: <ToolTipLabel label="Settings"/> ,mainUrl: "", features:[
+            {name:"Users", url:"settings/users"},
+            {name:"Reference Docs Sections",url:"settings/documents/referencesections"}
+        ]},
 ];
 
 export default function NavMainSidebar() {
@@ -70,7 +86,7 @@ export default function NavMainSidebar() {
                 transitionDuration={150}
                 key={link.pos}
                 arrowSize={10}
-                width={180}
+                width={240}
             >
                 <Popover.Target>
                 <Link
@@ -112,7 +128,7 @@ export default function NavMainSidebar() {
               transitionDuration={150}
               key={link.pos+link.label}
               arrowSize={10}
-              width={180}
+              width={200}
             >
                 <Popover.Target>
                 <UnstyledButton
@@ -154,9 +170,9 @@ export default function NavMainSidebar() {
                 <Drawer
                     opened={opened}
                     onClose={() => { setOpened(false); setPotentialModule("")}}
-                    title="Register"
-                    padding="xl"
-                    size="250px"
+                    title=""
+                    padding="lg"
+                    size="290px"
                     overlayColor={theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.colors.gray[2]}
                     overlayOpacity={0.55}
                     overlayBlur={3}
@@ -169,6 +185,10 @@ export default function NavMainSidebar() {
                         drawer: {
                             paddingRight:"0 !important",
                             marginLeft: 50,
+                            backgroundColor:
+                              theme.colorScheme === "dark"
+                                ? theme.colors.dark[9]
+                                : theme.colors.gray[0],
                         },
                     })}
                 >
@@ -186,8 +206,9 @@ export default function NavMainSidebar() {
                             }}
                             key={link.name}
                             to={link.url}
+
                         >
-                            {link.name}
+                           <Text fz={"lg"} align={"center"} span>{link.name}</Text>
                         </NavLink>
                     ))
                     }
@@ -277,12 +298,13 @@ const useStyles = createStyles((theme) => ({
         fontFamily: `Greycliff CF, ${theme.fontFamily}`,
         marginBottom: theme.spacing.xl,
         backgroundColor:
-            theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
+          theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white,
         padding: theme.spacing.md,
+        paddingLeft: 0,
         paddingTop: 18,
         height: 60,
         borderBottom: `1px solid ${
-            theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[3]
+            theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[3]
         }`,
     },
 

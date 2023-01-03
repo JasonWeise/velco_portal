@@ -206,7 +206,7 @@ export default function LoginPage() {
             <Form method="post" style={{height:'100%'}}>
                 <Paper className={classes.form} radius={0} p={30}>
                     <Title order={2} className={classes.title} align="center" mt="md" mb={50}>
-                        Welcome to Polly Portal!
+                        Welcome to the Velco Portal!
                     </Title>
 
                     <TextInput label="Email address" placeholder="hello@gmail.com" size="md"               ref={emailRef}
